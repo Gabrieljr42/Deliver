@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - My Online Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            color: #333333;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .minimalist-button {
+            background-color: transparent;
+            border: none;
+            padding: 10px 20px;
+            color: #333333;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .minimalist-button:hover {
+            background-color: #f5f5f5;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 10px;
+        }
+
+        nav a {
+            color: #333333;
+            text-decoration: none;
+        }
+
+        .login-form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .login-form button {
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Deliver</h1>
+            <nav>
+                <ul>
+                    <li><a href="http://localhost:8080/home">Página inicial</a></li>
+                    <li><a href="http://localhost:8080/products">Produtos</a></li>
+                    <li th:if="${#httpServletRequest.userPrincipal == null}">
+                        <a href="http://localhost:8081/login">Login</a>
+                    </li>
+                    <li th:if="${#httpServletRequest.userPrincipal != null}">
+                        <a href="http://localhost:8081/logout">Logout</a>
+                    </li>
+                    <li th:if="${username != null}">
+                        <a href="http://localhost:8080/profile">Hello, <span th:text="${username}"></span></a>
+                    </li>
+                    <li th:if="${#httpServletRequest.userPrincipal == null}">
+                        <a href="http://localhost:8081/register">Registrar</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="login-form">
+            <h2>Login</h2>
+            <!-- Display the username and message on the top of the screen -->
+            <div th:if="${username != null}">
+                <p>Welcome, <span th:text="${username}"></span>!</p>
+                <p>You are logged in.</p>
+            </div>
+            <!-- The login form -->
+            <form th:action="@{/login}" method="post">
+                <div><label> Nome de usuário: <input type="text" name="username"/> </label></div>
+                <div><label> Senha: <input type="password" name="password"/> </label></div>
+                <div><input type="submit" class="minimalist-button" value="Entrar"/></div>
+            </form>
+        </section>
+    </div>
+</body>
+</html>
