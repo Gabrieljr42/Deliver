@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Product</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        padding: 20px;
+        margin: 0;
+    }
+
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    h1 {
+        color: #333333;
+        margin: 0;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    nav li {
+        margin-right: 10px;
+    }
+
+    nav a {
+        color: #333333;
+        text-decoration: none;
+    }
+
+    .home-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin-bottom: 40px;
+    }
+
+    .branch-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin-bottom: 40px;
+    }
+
+    .user-registration {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+    }
+
+    .user-registration input[type="text"],
+    .user-registration input[type="email"],
+    .user-registration input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .user-registration button {
+        background-color: #333333;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    .register-form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .register-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .register-form input[type="text"],
+        .register-form input[type="number"],
+        .register-form input[type="email"],
+        .register-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .register-form button {
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+</style>
+</head>
+<body>
+  
+
+
+  <div class="container">
+    <header>
+        <h1>UNbelievable</h1>
+        <nav>
+            <ul>
+                <li><a href="http://localhost:8080/home">Página inicial</a></li>
+                <li><a href="http://localhost:8080/products">Produtos</a></li>
+                <li><a href="http://localhost:8080/addProduct">Adicionar novo Produto</a></li>
+                <li><a href="http://localhost:8081/login">Login</a></li>
+                <li><a href="http://localhost:8081/register">Registrar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="register-form">
+        <h2>Registrar novo produto</h2>
+        <form action="/products" method="post">
+        <label for="name">Nome do produto</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="description">Descrição:</label><br>
+        <input type="text" id="description" name="description"><br>
+        <label for="price">Preço:</label><br>
+        <input type="number" id="price" name="price" min="0"><br>
+        <input type="submit" value="Submit">
+        </form>
+    </section>
+  </div>
+
+  
+  
+</body>
+</html>

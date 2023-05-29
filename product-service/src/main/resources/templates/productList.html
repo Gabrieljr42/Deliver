@@ -87,6 +87,12 @@
             color: #ff0000;
             font-size: 16px;
         }
+        .product-item img {
+            max-width: 100%;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
     </style>
       <style>
         body {
@@ -176,16 +182,18 @@
             padding: 10px 20px;
             cursor: pointer;
         }
+        
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Deliver</h1>
+            <h1>UNbelievable</h1>
             <nav>
                 <ul>
                     <li><a href="http://localhost:8080/home">Página inicial</a></li>
                     <li><a href="http://localhost:8080/products">Produtos</a></li>
+                    <li><a href="http://localhost:8080/addProduct">Adicionar novo Produto</a></li>
                     <li><a href="http://localhost:8081/login">Login</a></li>
                     <li><a href="http://localhost:8081/register">Registrar</a></li>
                 </ul>
@@ -195,6 +203,7 @@
         <ul class="product-list">
             <li class="product-item" th:each="product : ${products}">
                 <h3 th:text="${product.name}"></h3>
+                <img th:src="${product.url}" alt="Product Image"> 
                 <p th:text="${product.description}"></p>
                 <span th:text="'$' + ${product.price}"></span>
             </li>

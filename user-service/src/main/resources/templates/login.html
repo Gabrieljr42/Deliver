@@ -94,23 +94,14 @@
 <body>
     <div class="container">
         <header>
-            <h1>Deliver</h1>
+            <h1>UNbelievable</h1>
             <nav>
                 <ul>
                     <li><a href="http://localhost:8080/home">Página inicial</a></li>
                     <li><a href="http://localhost:8080/products">Produtos</a></li>
-                    <li th:if="${#httpServletRequest.userPrincipal == null}">
-                        <a href="http://localhost:8081/login">Login</a>
-                    </li>
-                    <li th:if="${#httpServletRequest.userPrincipal != null}">
-                        <a href="http://localhost:8081/logout">Logout</a>
-                    </li>
-                    <li th:if="${username != null}">
-                        <a href="http://localhost:8080/profile">Hello, <span th:text="${username}"></span></a>
-                    </li>
-                    <li th:if="${#httpServletRequest.userPrincipal == null}">
-                        <a href="http://localhost:8081/register">Registrar</a>
-                    </li>
+                    <li><a href="http://localhost:8080/addProduct">Adicionar novo Produto</a></li>
+                    <li><a href="http://localhost:8081/login">Login</a></li>
+                    <li><a href="http://localhost:8081/register">Registrar</a></li>
                 </ul>
             </nav>
         </header>
