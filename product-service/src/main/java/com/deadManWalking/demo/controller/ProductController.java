@@ -27,10 +27,9 @@ public class ProductController {
 
     @PostMapping("/products")  
     public String createProduct(@ModelAttribute Product product, Model model) {  
-        // Generate an image based on the product description
-        // String imageUrl = imageGenerationService.generateImage(product.getDescription());
-        String imageUrl = "https://oaidalleapiprodscus.blob.core.windows.net/private/org-aVxxwbvScHivlhw3hDK9qcWM/user-HC8m5fl5Nw0rxKuROLdnjGLs/img-8LXiT9lCzCwaIbqwJTn0fHrc.png?st=2023-05-28T13%3A54%3A24Z&se=2023-05-28T15%3A54%3A24Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-05-28T08%3A48%3A26Z&ske=2023-05-29T08%3A48%3A26Z&sks=b&skv=2021-08-06&sig=3Xi8fHP83vG0OJK%2BpdJP71kyPwssqkMzzQBbuipc6wY%3D";
-        // Set the image URL on the product
+    
+        String imageUrl = imageGenerationService.generateImage(product.getDescription());
+        
         product.setImageUrl(imageUrl);
 
         productService.saveProduct(product);  
@@ -54,5 +53,5 @@ public class ProductController {
         model.addAttribute("products", products);
         return "home";
     }
-    // additional endpoints...
+   
 }
