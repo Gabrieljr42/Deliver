@@ -1,0 +1,13 @@
+server:
+  port: 8084
+  servlet:
+    context-path: /config
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://discovery-server:8761/eureka}
