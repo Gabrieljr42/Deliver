@@ -1,4 +1,4 @@
-package br.com.geek.theories.discoveryserver;
+package br.com.DeadManWalking.demo.discoveryserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
