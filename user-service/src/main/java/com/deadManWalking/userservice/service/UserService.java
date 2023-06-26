@@ -37,10 +37,5 @@ public class UserService implements UserDetailsService {
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
     }
-    @Bean
-    public CommandLineRunner demo() {
-        return args -> {
-            userRepository.save(new User("admin","senha","admin@admin.com"));
-        };
-    }
+   
 }

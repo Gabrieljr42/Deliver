@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: 8889
   servlet:
     context-path: /config
 spring:
@@ -7,7 +7,13 @@ spring:
     name: config-server
   profiles:
     active: native
+  cloud:
+    config:
+      enabled: false
+      server:
+        native:
+          search-locations: .
 eureka:
   client:
-    serviceUrl:
-      defaultZone: ${EUREKA_SERVER:http://discovery-server:8761/eureka}
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka
