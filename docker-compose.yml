@@ -1,21 +1,39 @@
-version: '3.4'
-
-services:
+version: '3'
+services: 
   config-server:
     image: maven:3.8.4-openjdk-17-slim
     restart: always
     environment:
       TZ: America/Sao_Paulo
     ports:
-      - 8889:8889
+      - 8082:8082
     working_dir: /server
     command: sh -c "cd /server && mvn clean && mvn spring-boot:run"
     user: root
+    depends_on:
+      - discovery-server
     volumes:
       - ./config-server:/server
     networks:
       - UN-network
-
+  gateway-service:
+    image: maven:3.8.4-openjdk-17-slim
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - 8700:8700
+    working_dir: /server
+    command: sh -c "cd /server && mvn clean && mvn spring-boot:run"
+    user: root
+    volumes:
+      - ./gateway-service:/server
+    depends_on:
+      - config-server
+      - discovery-server
+      - product-service
+    networks:
+      - UN-network
   discovery-server:
     image: maven:3.8.4-openjdk-17-slim
     restart: always
@@ -28,21 +46,8 @@ services:
     user: root
     volumes:
       - ./discovery-server:/server
-    depends_on:
-      - config-server
     networks:
       - UN-network
-  # user-services:
-  #   image: maven:3.8.4-openjdk-17-slim
-  #   restart: always
-  #   ports:
-  #     - 8081:8081
-  #   volumes:
-  #     - ./user-service:/app
-  #   working_dir: /app
-  #   command: sh -c "cd /app && mvn clean && mvn spring-boot:run"
-  #   networks:
-  #     - UN-network
   product-service:
     image: maven:3.8.4-openjdk-17-slim
     restart: always
@@ -54,7 +59,6 @@ services:
     command: sh -c "cd /app && mvn clean && mvn spring-boot:run"
     networks:
       - UN-network
-
 networks:
   UN-network:
     driver: bridge
